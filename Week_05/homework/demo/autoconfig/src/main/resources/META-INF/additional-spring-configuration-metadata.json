@@ -1,0 +1,16 @@
+{
+  "properties": [
+    {
+      "defaultValue": 0,
+      "name": "student.id",
+      "description": "Set whether school is open.",
+      "type": "java.lang.Integer"
+    },
+    {
+      "defaultValue": "",
+      "name": "student.name",
+      "description": "set schook name",
+      "type": "java.lang.String"
+    }
+  ]
+}

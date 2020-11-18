@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean id="wheel3" class="com.example.demo.spring.loadbean.xmlconfig.Wheel3" >
+           <property name="shape">
+               <value>方形</value>
+           </property>
+       </bean>
+        <bean id="body3" class="com.example.demo.spring.loadbean.xmlconfig.Body3" >
+            <property name="colour">
+                <value>红色</value>
+            </property>
+        </bean>
+        <bean id="car3" class="com.example.demo.spring.loadbean.xmlconfig.Car3">
+            <property name="body" ref="body3"></property>
+            <property name="wheel" ref="wheel3"></property>
+        </bean>
+</beans>
