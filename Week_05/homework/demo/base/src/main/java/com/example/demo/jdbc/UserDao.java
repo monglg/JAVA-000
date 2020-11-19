@@ -1,5 +1,8 @@
 package com.example.demo.jdbc;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
@@ -15,6 +18,9 @@ import java.util.List;
  */
 @Component
 public class UserDao {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
 
     public void insert(User user) {
@@ -65,7 +71,9 @@ public class UserDao {
 
     public void update(User user) {
         String sql = "UPDATE  `user` SET `name` = '" + user.getName() + "', `age`=" + user.getAge() + " WHERE id = " + user.getId();
-        executeByStatement(sql);
+
+        jdbcTemplate.update(sql);
+        //executeByStatement(sql);
 
     }
 

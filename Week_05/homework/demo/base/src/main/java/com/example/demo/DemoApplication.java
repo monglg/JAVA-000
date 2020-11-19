@@ -64,8 +64,10 @@ public class DemoApplication implements CommandLineRunner {
 		user.setId(1);
 		user.setAge(19);
 		userDao.updateStatement(user);
-
+		user.setAge(20);
+		userDao.update(user);
 		User result = userDao.selectById(1);
+
 		System.out.println(result);
 
 		List<User> users = new ArrayList<>();
