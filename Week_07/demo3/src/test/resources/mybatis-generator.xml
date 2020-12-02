@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MySQLTables"
+             targetRuntime="MyBatis3">
+
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="addGWTInterface" value="false"/>
+        <property name="suppressJavaInterface" value="false"/>
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!--<plugin type="org.mybatis.generator.plugins.GuavaStyleToStringPlugin"/>-->
+
+        <commentGenerator >
+            <property name="suppressAllComments" value="false"/>
+            <!--<property name="suppressAllComments" value="true" />-->
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://cdb-ecfpfvam.bj.tencentcdb.com:10040/test?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false"
+                userId="root"
+                password="mlg123456">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false"/>
+            <property name="useJava8Time" value="true"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator
+                targetProject="MAVEN"
+                targetPackage="com.example.demo2.dao.domain">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="constructorBased" value="false"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator
+                targetProject="MAVEN"
+                targetPackage="mybatis.mapper.generated">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator
+                targetProject="MAVEN"
+                targetPackage="com.example.demo2.dao.mapper"
+                type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+       <!-- <table tableName="channel_info" domainObjectName="ChannelInfo"
+               enableSelectByExample="false"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="selectAllOrderByClause" value="id DESC"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--<table tableName="channel_account" domainObjectName="ChannelAccount"
+               enableSelectByExample="false"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="selectAllOrderByClause" value="id DESC"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--<table tableName="channel_mq" domainObjectName="ChannelMq"
+               enableSelectByExample="false"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="selectAllOrderByClause" value="id DESC"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--<table tableName="channel_operate_log" domainObjectName="ChannelOperateLog"
+               enableSelectByExample="false"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="selectAllOrderByClause" value="id DESC"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <table tableName="order_info" domainObjectName="OrderInfo"
+               enableSelectByExample="false"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="selectAllOrderByClause" value="id DESC"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,23 @@
+server:
+  port: 9017
+  context-path: /test
+  max-http-header-size: 48000
+
+mybatis:
+  mapper-locations: classpath*:META-INF/mybatis/mapper/*.xml,classpath*:META-INF/mybatis/mapper/extend/*.xml
+  type-aliases-package: com.example.demo2.dao
+mysql:
+  datasource:
+    write:
+      name: write-data-source
+      url: jdbc:mysql://cdb-ecfpfvam.bj.tencentcdb.com:10040/test?useUnicode=true&characterEncoding=utf-8&useSSL=true
+      username: root
+      password: mlg123456
+      driver-class-name: com.mysql.jdbc.Driver
+    read:
+      name: read-data-source
+      url: jdbc:mysql://cdb-ecfpfvam.bj.tencentcdb.com:10040/test?useUnicode=true&characterEncoding=utf-8&useSSL=true
+      username: root
+      password: mlg123456
+      driver-class-name: com.mysql.jdbc.Driver
+
