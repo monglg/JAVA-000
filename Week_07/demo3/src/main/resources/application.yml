@@ -3,21 +3,51 @@ server:
   context-path: /test
   max-http-header-size: 48000
 
+spring:
+  shardingsphere:
+    datasource:
+      common:
+        primaryds:
+          url: jdbc:mysql://cdb-ecfpfvam.bj.tencentcdb.com:10040/test?useUnicode=true&characterEncoding=utf-8&useSSL=true
+          type: com.alibaba.druid.pool.DruidDataSource
+          driver-class-name: com.mysql.jdbc.Driver
+          username: root
+          password: mlg123456
+        replicads0:
+          url: jdbc:mysql://cdb-ecfpfvam.bj.tencentcdb.com:10040/test?useUnicode=true&characterEncoding=utf-8&useSSL=true
+          type: com.alibaba.druid.pool.DruidDataSource
+          driver-class-name: com.mysql.jdbc.Driver
+          username: root
+          password: mlg123456
+      names: primaryds,replicads0
+      primaryds:
+        url: jdbc:mysql://cdb-ecfpfvam.bj.tencentcdb.com:10040/test?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: mlg123456
+      replicads0:
+        url: jdbc:mysql://cdb-ecfpfvam.bj.tencentcdb.com:10040/test?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: mlg123456
+
+    rules:
+      replica-query:
+        data-sources:
+          pr-ds:
+            primary-data-source-name: primaryds
+            replica-data-source-names: replicads0
+            load-balancer-name: round_robin
+        load-balancers:
+          round-robin:
+            props:
+             name: 1
+             age: 2
+            type: ROUND_ROBIN
 mybatis:
   mapper-locations: classpath*:META-INF/mybatis/mapper/*.xml,classpath*:META-INF/mybatis/mapper/extend/*.xml
   type-aliases-package: com.example.demo2.dao
-mysql:
-  datasource:
-    write:
-      name: write-data-source
-      url: jdbc:mysql://cdb-ecfpfvam.bj.tencentcdb.com:10040/test?useUnicode=true&characterEncoding=utf-8&useSSL=true
-      username: root
-      password: mlg123456
-      driver-class-name: com.mysql.jdbc.Driver
-    read:
-      name: read-data-source
-      url: jdbc:mysql://cdb-ecfpfvam.bj.tencentcdb.com:10040/test?useUnicode=true&characterEncoding=utf-8&useSSL=true
-      username: root
-      password: mlg123456
-      driver-class-name: com.mysql.jdbc.Driver
+
 

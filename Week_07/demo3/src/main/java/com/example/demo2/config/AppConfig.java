@@ -29,31 +29,5 @@ import java.util.Map;
 @Configuration
 public class AppConfig {
 
-    @Bean
-    @ConfigurationProperties(prefix = "mysql.datasource.write")
-    public DataSource getMasterSource() {
-        return new DruidDataSource();
-
-    }
-
-    @Bean
-    @ConfigurationProperties(prefix = "mysql.datasource.read")
-    public DataSource getReadSource() {
-        return new DruidDataSource();
-
-    }
-
-    @Bean
-    @Primary
-    public DataSource getRoutingDataSource() {
-        CustomRoutingDataSource customRoutingDataSource = new CustomRoutingDataSource();
-        Map<Object, Object> dataSourceMap = new HashMap<>();
-        dataSourceMap.put(ThreadLocalContextHolder.DB_WRITE, getMasterSource());
-        dataSourceMap.put(ThreadLocalContextHolder.DB_READ, getReadSource());
-        customRoutingDataSource.setTargetDataSources(dataSourceMap);
-        customRoutingDataSource.setDefaultTargetDataSource(getMasterSource());
-        return customRoutingDataSource;
-    }
-
 
 }
